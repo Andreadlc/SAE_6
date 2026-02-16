@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const navController = require('../controllers/navControler');
 
-router.get('/', (req, res) => {
-    res.render('accueil', { isLog: req.session.isLog });
-});
+router.get('/', navController.getAccueil);
 
 module.exports = router;
