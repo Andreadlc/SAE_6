@@ -1,0 +1,28 @@
+<%- include('fragments/head') %> 
+<%- include('fragments/navigation') %>
+<main>
+    <div class="presentation">
+        <h1>Bienvenue sur Core Lab</h1>
+        <p>
+	    Bonjour et bienvenue sur Core Lab : une plateforme capable de diviser des calculs mathématiques complexes pour les résoudre simultanément sur un cluster de Raspberry Pi.
+        </p>
+
+        <h2>Comment ça marche ?</h2>
+	        <ul>
+            	<li> 1. Choisissez votre algorithme préféré.</li>
+            	<li> 2. Entrez les paramètres de calcul souhaités.</li>
+            	<li> 3. Lancez le calcul, qui sera automatiquement distribué entre les différents nœuds (Master et Workers).</li>
+            	<li> 4. Consultez les résultats et visualisations générées par la plateforme.</li>
+            </ul>
+
+        <h2>Les Fonctionnalités</h2>
+            <ul>
+            	<li> 1. Configuration : Choisissez votre algorithme (Gauss, Monte-Carlo, Primes).</li>
+            	<li> 2. Distribution : Le Master divise la charge de travail via MPI.</li>
+            	<li> 3. Calcul Parallèle : Chaque Worker résout sa portion de données. </li>
+	    	    <li> 4. Visualisation : Les résultats sont affichés sous forme de graphiques interactifs </li>
+            	<li> 5. Stocker les résultats dans un historique pour une consultation ultérieure.</li>
+            </ul>
+    </div>  
+</main>
+<%- include('fragments/foot') %>
