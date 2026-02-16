@@ -157,6 +157,131 @@ main {
     margin: 20px;
 }
 
+/* Formulaires */
+.form-container{
+    background-color: var(--bg-form);
+    width: fit-content;
+    height: fit-content;
+    margin: 20px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+fieldset{
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+
+form{
+    /*width: 450px;*/
+    min-width: fit-content;
+    height: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.section-form{
+    margin: 10px ;
+}
+#calcul-form .label, #gauss-form label{
+    color: white;
+    margin: 10px;
+}
+
+form input[type=text],
+form input[type=password],
+form input[type=number],
+form select {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 95%;
+    min-width: fit-content;
+    border: 1px lightgrey solid;
+    border-radius: 5px;
+    padding: 5px;
+    transition: border 0.25s linear;
+}
+
+form input[type=text]:focus,
+form input[type=password]:focus,
+form input[type=number]:focus{
+    outline: none;
+    border: 1px var(--bg-form) solid;
+}
+
+/* Boutons submit et reset */
+.form .form-btn, fieldset form input[type=submit] {
+    min-width: 80%; /* Prendre toute la largeur disponible */
+    height: 40px; /* Hauteur suffisante pour éviter que le texte soit coupé */
+    font-size: 16px; /* Taille du texte lisible */
+    text-align: center; /* Centrer le texte */
+    padding: 10px; /* Ajout de padding vertical pour espacer le texte des bords */
+    border-radius: 5px; /* Arrondir les coins */
+    border: none; /* Enlever la bordure par défaut */
+    margin: 5px; /* Espacement vertical entre les boutons */
+}
+
+form input[type=submit]{
+    background-color: var(--form-submit-bg);
+    color: var(--form-btn-text);
+    align-self: center;
+}
+
+form input[type=reset]{
+    background-color: var(--form-clear-bg);
+    color: var(--form-btn-text);
+    align-self: center;
+}
+
+fieldset form input[type=submit]{
+    background-color: var(--bg-form);
+}
+/* oeillet du mot de passe */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+.password-container {
+    position: relative;
+    display: inline-block;
+}
+
+.password-container button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-30%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+/*
+.captcha{
+    background: var(--bg);
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+    border-radius: 10px;
+
+}
+*/
+
+.fan-container form{
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 /* bas de page */
 footer{
     background-color: var(--footer);

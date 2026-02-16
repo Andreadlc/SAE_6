@@ -1,0 +1,23 @@
+<%- include('fragments/head') %>
+<%- include('fragments/navigation') %>
+<main>
+    <div class="login-container">
+        <fieldset>
+            <legend>Authentification</legend>
+            <form method='post' action="/auth">
+                <label for='username'>Nom d'utilisateur</label>
+                <input type='text' name='username' id='username' placeholder='Nom utilisateur' required>
+
+                <div class="password-container">
+                    <label for='password'>Mot de passe</label>
+                    <input type='password' name='password' id='password' placeholder='Mot de passe' required>
+                    <button type="button" id="togglePassword">👁️</button>
+                </div>
+                <input type='submit' name='ok' value='Se connecter'>
+                <br>
+            </form>
+        </fieldset>
+    </div>
+</main>
+<script src="/js/login.js"></script>
+<%- include('fragments/foot') %>

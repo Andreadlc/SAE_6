@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const accueilRouter = require("./routes/accueil");
+const authRouter = require("./routes/auth");
+
+
 const session = require("express-session");
 
 app.use(session({
@@ -19,8 +22,10 @@ app.listen(port, () => {
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(authRouter);
 app.use("/", accueilRouter);
