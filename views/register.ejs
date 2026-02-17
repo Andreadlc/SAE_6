@@ -1,0 +1,27 @@
+<%- include('fragments/head') %>
+<%- include('fragments/navigation') %>
+<main>
+    <div class="login-container">
+        <fieldset>
+            <legend>Inscription</legend>
+            <form method='post' action="/register">
+                <label for='username'>Nom d'utilisateur</label>
+                <input type='text' name='username' id='username' placeholder='Choisir un pseudo' required>
+
+                <div class="password-container">
+                    <label for='password'>Mot de passe</label>
+                    <input type='password' name='password' id='password' placeholder='Mot de passe' required>
+                </div>
+
+                <div class="password-container">
+                    <label for='confirmPassword'>Confirmer le mot de passe</label>
+                    <input type='password' name='confirmPassword' id='confirmPassword' placeholder='Confirmer' required>
+                </div>
+
+                <input type='submit' value="S'inscrire">
+            </form>
+            <p>Déjà un compte ? <a href="/auth">Connectez-vous</a></p>
+        </fieldset>
+    </div>
+</main>
+<%- include('fragments/foot') %>
