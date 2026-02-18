@@ -1,21 +1,32 @@
 <%- include('fragments/head') %>
 <%- include('fragments/navigation') %>
+
 <main>
     <div class="login-container">
         <fieldset>
             <legend>Inscription</legend>
             <form method='post' action="/register">
-                    <% if (locals.error) { %>
-                        <p style="color: red; border: 1px solid red; padding: 10px;">
-                            <%= error %>
-                        </p>
-                    <% } %>
+                <% if (locals.error) { %>
+                    <p style="color: red; border: 1px solid red; padding: 10px;">
+                        <%= error %>
+                    </p>
+                <% } %>
+
                 <label for='username'>Nom d'utilisateur</label>
                 <input type='text' name='username' id='username' placeholder='Choisir un pseudo' required>
 
                 <div class="password-container">
                     <label for='password'>Mot de passe</label>
                     <input type='password' name='password' id='password' placeholder='Mot de passe' required>
+                    
+                    <div id="password-constraints" class="constraints-list">
+                        <div id="length" class="invalid">✖ 8 caractères minimum</div>
+                        <div id="majuscule" class="invalid">✖ Au moins 1 majuscule</div>
+                        <div id="minuscule" class="invalid">✖ Au moins 1 minuscule</div>
+                        <div id="chiffre" class="invalid">✖ Au moins 1 chiffre</div>
+                        <div id="special" class="invalid">✖ Au moins 1 caractère spécial (%?*#!)</div>
+                        <div id="match" class="invalid">✖ Mots de passe identiques</div>
+                    </div>
                 </div>
 
                 <div class="password-container">
@@ -23,10 +34,13 @@
                     <input type='password' name='confirmPassword' id='confirmPassword' placeholder='Confirmer' required>
                 </div>
 
-                <input type='submit' value="S'inscrire">
+                <input type='submit' id="submit" value="S'inscrire" disabled>
             </form>
             <p>Déjà un compte ? <a href="/auth">Connectez-vous</a></p>
         </fieldset>
     </div>
 </main>
+
+<script src="/js/registerValidation.js"></script>
+
 <%- include('fragments/foot') %>
