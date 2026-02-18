@@ -60,16 +60,22 @@ exports.postAuth = async (req, res) => {
     try {
         // 6. On cherche l'utilisateur avec son pseudo ET son mot de passe
         const user = await User.findOne({ username: username});
-        const match = await bcrypt.compare(password, user.password);
+        if (user) {
+            const match = await bcrypt.compare(password, user.password);
 
-        if (match) {
-            req.session.isLog = true;
-            req.session.user = username;
-            res.redirect('/');
+            if (match) {
+                req.session.isLog = true;
+                req.session.user = username;
+                res.redirect('/');
+            } else {
+                req.session.error = "Identifiants incorrects.";
+                res.redirect('/auth');
+            }
         } else {
             req.session.error = "Identifiants incorrects.";
             res.redirect('/auth');
         }
+
     } catch (err) {
         console.log(err);
         res.redirect('/auth');
