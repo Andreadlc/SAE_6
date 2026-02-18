@@ -1,4 +1,6 @@
 const User = require('../models/user')// 1. On importe le modèle
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // Facteur de travail
 
 exports.getAuth = (req, res) => {
     const errorMsg = req.session.error;
@@ -32,10 +34,13 @@ exports.postRegister = async (req, res) => {
             return res.redirect('/register');
         }
 
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
         // 4. On crée et on sauvegarde le nouvel utilisateur
         const newUser = new User({
             username: username,
-            password: password // Plus tard, on verra pour "hasher" le mot de passe (sécurité)
+            password: hashedPassword // Plus tard, on verra pour "hasher" le mot de passe (sécurité)
         });
 
         await newUser.save(); 
@@ -54,9 +59,10 @@ exports.postAuth = async (req, res) => {
 
     try {
         // 6. On cherche l'utilisateur avec son pseudo ET son mot de passe
-        const user = await User.findOne({ username: username, password: password });
+        const user = await User.findOne({ username: username});
+        const match = await bcrypt.compare(password, user.password);
 
-        if (user) {
+        if (match) {
             req.session.isLog = true;
             req.session.user = username;
             res.redirect('/');
