@@ -1,0 +1,27 @@
+<%- include('fragments/head') %>
+<%- include('fragments/navigation') %>
+<main>
+    <div class="presentation">    
+        <h1>TD2game - Le JUSTE PRIX</h1>
+        <p>Le but de ce TD est de créer un jeu du juste prix. Le programme choisira un nombre aléatoire entre 1 et 20...</p> 
+        <div id="gameContainer">
+            <form id="gameform">
+                <label for="guess">Entrez votre proposition (entre 1 et 20) :</label> 
+                <input type="number" id="guess" name="guess" min="1" max="20" required> 
+                <button type="button" onclick="verifierProposition()">Valider</button>
+            </form>
+
+            <ul id="resultList">
+
+            </ul>
+
+            <table>
+                <tbody id="SaveGame">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<script src="/js/justeprix.js"></script>
+<%- include('fragments/foot') %>

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const accueilRouter = require("./routes/accueil");
 const authRouter = require("./routes/auth");
+const justeprixRouter = require("./routes/justeprix");
 const mongoose = require("mongoose");
 
 // On se connecte à une base nommée "sae6_db" (elle se créera toute seule)
@@ -32,4 +33,5 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(authRouter);
+app.use(justeprixRouter);
 app.use("/", accueilRouter);
