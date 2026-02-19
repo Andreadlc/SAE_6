@@ -19,7 +19,7 @@
     --form-label-color: #fff;
     --form-textfield-bg: #fff;
     --form-submit-bg: darkgreen;
-    --form-clear-bg: #a4161a;
+    --form-clear-bg: #A01C2A;
     --form-btn-text: #fff;
 
 }
@@ -291,12 +291,12 @@ input[type="password"]::-ms-clear {
 }
 
 .valid { 
-    color: #28a745 !important; /* Vert */
+    color: #175E28 !important; /* Vert */
     font-weight: bold;
 }
 
 .invalid { 
-    color: #dc3545 !important; /* Rouge */
+    color: #A01C2A !important; /* Rouge */
 }
 
 /* bas de page */
