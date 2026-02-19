@@ -7,6 +7,7 @@ const accueilRouter = require("./routes/accueil");
 const authRouter = require("./routes/auth");
 const justeprixRouter = require("./routes/justeprix");
 const moduleRouter = require("./routes/calcul");
+const adminRouter = require("./routes/admin");
 const error404 = require("./controllers/error404Controler");
 const mongoose = require("mongoose");
 
@@ -38,6 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(authRouter);
 app.use(justeprixRouter);
 app.use(moduleRouter);
+app.use(adminRouter);
 app.use("/", accueilRouter);
 
 app.use(error404.get404);

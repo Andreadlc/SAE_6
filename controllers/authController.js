@@ -5,16 +5,28 @@ const saltRounds = 10; // Facteur de travail
 exports.getAuth = (req, res) => {
     const errorMsg = req.session.error;
     req.session.error = null;
+    
+    // Sécurité : si session.user n'existe pas, on met 'guest'
+    const role = (req.session.user && req.session.user.role) ? req.session.user.role : 'guest';
+
     res.render('login', { 
         isLog: req.session.isLog, 
+        userRole: role, 
         error: errorMsg 
     });
 };
 
 exports.getRegister = (req, res) => {
-    const errorMsg = req.session.error; // Optionnel : pour afficher les erreurs d'inscription aussi
+    const errorMsg = req.session.error;
     req.session.error = null;
-    res.render('register', { isLog: req.session.isLog, error: errorMsg });
+
+    const role = (req.session.user && req.session.user.role) ? req.session.user.role : 'guest';
+
+    res.render('register', { 
+        isLog: req.session.isLog, 
+        userRole: role, 
+        error: errorMsg 
+    });
 };
 
 // 2. Ajout de "async" car on interagit avec la base de données
@@ -65,12 +77,15 @@ exports.postAuth = async (req, res) => {
 
             if (match) {
                 req.session.isLog = true;
-                req.session.user = username;
+                
+                // IMPORTANT : On stocke un objet avec le role, pas juste le nom
+                req.session.user = {
+                    username: user.username,
+                    role: user.role || 'user' // 'user' par défaut si pas de rôle en BD
+                };
+                
                 res.redirect('/');
-            } else {
-                req.session.error = "Identifiants incorrects.";
-                res.redirect('/auth');
-            }
+        }
         } else {
             req.session.error = "Identifiants incorrects.";
             res.redirect('/auth');
