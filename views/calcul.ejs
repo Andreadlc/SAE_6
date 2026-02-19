@@ -1,0 +1,61 @@
+<%- include('fragments/head') %>
+<%- include('fragments/navigation') %>
+
+<main>
+    <div class="form-container">
+        <% if (locals.error) { %>
+            <p style="color: darkred; font-weight: bold; border: 1px solid darkred; padding: 10px;">
+                <%= error %>
+            </p>
+        <% } %>
+
+        <form class="form" id="calcul-form" action="/calcul" method="POST">
+
+            <div class="section-form">
+                <label class="label" for="programme">Programme</label>
+                <select id="programme" name="programme">
+                    <option value="prime">Nombres premiers</option>
+                    <option value="monte_carlo">Monte-Carlo (π)</option>
+                </select>
+            </div>
+
+            <div class="section-form">
+                <label class="label" for="valeur">
+                    <span id="valeur-label">Valeur de calcul</span>
+                </label>
+                <input type="number" id="valeur" name="valeur" max="1000000" required>
+            </div>
+
+            <div class="section-form">
+                <label class="label" for="nb_process">Nombre de processus MPI</label>
+                <input type="number" id="nb_process" name="nb_process" max="8" required>
+            </div>
+
+            <input type="submit" id="btn-lancer" class="form-btn" value="Lancer le calcul">
+            <input type="reset" class="form-btn" value="Réinitialiser">
+
+            <div id="loading" style="display: none; margin-top: 15px; color: blue; font-weight: bold;">
+                <img src="https://i.gifer.com/ZKZg.gif" width="20" alt=""> Calcul en cours sur le cluster MPI...
+            </div>
+        </form>
+
+        <% if (locals.resultat) { %>
+            <div class="result-box" style="margin-top: 20px; padding: 15px; background: #e0f7fa; border-radius: 8px;">
+                <h3>Résultat du calcul :</h3>
+                <p><%= resultat %></p>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<script>
+    // On écoute la soumission du formulaire unique
+    document.getElementById('calcul-form').addEventListener('submit', function() {
+        // 1. On cache le bouton de lancement
+        document.getElementById('btn-lancer').style.display = 'none';
+        // 2. On affiche le message de chargement
+        document.getElementById('loading').style.display = 'block';
+    });
+</script>
+
+<%- include('fragments/foot') %>

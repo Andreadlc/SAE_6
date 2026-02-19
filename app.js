@@ -6,6 +6,7 @@ const path = require("path");
 const accueilRouter = require("./routes/accueil");
 const authRouter = require("./routes/auth");
 const justeprixRouter = require("./routes/justeprix");
+const moduleRouter = require("./routes/calcul");
 const error404 = require("./controllers/error404Controler");
 const mongoose = require("mongoose");
 
@@ -15,7 +16,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/sae6_db')
     .catch(err => console.log("Erreur de connexion MongoDB :", err));
 
 const session = require("express-session");
-const router = require("./routes/accueil");
+
 
 app.use(session({
     secret: "secret-key",
@@ -36,6 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(authRouter);
 app.use(justeprixRouter);
+app.use(moduleRouter);
 app.use("/", accueilRouter);
 
 app.use(error404.get404);
