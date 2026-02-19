@@ -292,12 +292,12 @@ input[type="password"]::-ms-clear {
 }
 
 .valid { 
-    color: #28a745 !important; /* Vert */
+    color: #175E28 !important; /* Vert */
     font-weight: bold;
 }
 
 .invalid { 
-    color: #dc3545 !important; /* Rouge */
+    color: #871722 !important; /* Rouge */
 }
 
 /* bas de page */
