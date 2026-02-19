@@ -10,7 +10,7 @@ const error404 = require("./controllers/error404Controler");
 const mongoose = require("mongoose");
 
 // On se connecte à une base nommée "sae6_db" (elle se créera toute seule)
-mongoose.connect('mongodb://127.0.0.1:27017/sae6_db')
+mongoose.connect('mongodb://22300742:xzexz8e8@192.168.24.1:27017/22300742_db')
     .then(() => console.log("Connecté à MongoDB avec succès !"))
     .catch(err => console.log("Erreur de connexion MongoDB :", err));
 
