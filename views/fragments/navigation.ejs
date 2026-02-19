@@ -9,11 +9,18 @@
             </div>
             <ul class="nav-btn">
                 
-                <% if (isLog) { %>
+                <% if (userRole === 1) { %>
                     <li><a href="/calcul">module</a></li>
                     <li><a href="/justeprix">Juste Prix</a></li>
+                    <li><a href="/admin">Admin</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
-                <% } else { %>
+                <% }
+                else if (isLog) { %>
+                    <li><a href="/calcul">module</a></li>
+                    <li><a href="/justeprix">Juste Prix</a></li>
+                    <li><a href="/logout">Déconnexion</a></li> 
+                <% }
+                else { %>
                     <li><a href="/auth">Connexion</a></li>
                     <li><a href="/register">Inscription</a></li>
                 <% } %>

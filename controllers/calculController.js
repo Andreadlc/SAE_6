@@ -1,6 +1,13 @@
 exports.getCalcul = (req, res) => {
-    res.render('calcul', { isLog: req.session.isLog });
+    // Sécurité pour le rôle
+    const role = (req.session.user && req.session.user.role) ? req.session.user.role : 'guest';
+
+    res.render('calcul', { 
+        isLog: req.session.isLog,
+        userRole: role // On ajoute userRole ici aussi pour la navigation !
+    });
 }
+
 exports.postCalcul = (req, res) => {
     // 1. On récupère les valeurs du formulaire
     const programme = req.body.programme;
@@ -9,12 +16,15 @@ exports.postCalcul = (req, res) => {
 
     // 2. Simulation de calcul (2 secondes)
     setTimeout(() => {
-        // CORRECTION : Utilise les variables définies juste au-dessus
         const messageResultat = `Le programme ${programme} a été exécuté avec la valeur ${valeur} sur ${nb_process} processus.`;
         
+        // Sécurité pour le rôle (indispensable pour éviter le crash)
+        const role = (req.session.user && req.session.user.role) ? req.session.user.role : 'guest';
+
         res.render('calcul', { 
             resultat: messageResultat,
-            isLog: req.session.isLog, 
+            isLog: req.session.isLog,
+            userRole: role, 
             error: null 
         });
     }, 2000);

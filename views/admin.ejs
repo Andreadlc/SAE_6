@@ -1,0 +1,69 @@
+<%- include('fragments/head') %>
+<%- include('fragments/navigation') %>
+
+<main>
+    <div class="form-container" style="margin:20px; padding:20px; border-radius:10px;">
+        <h3 style="color:white;">État des Raspberry Pi Zero (Workers)</h3>
+
+        <% if (!locals.workers || workers.length === 0) { %>
+            <p style="color:#ff4d4d;">Impossible de récupérer l’état du cluster</p>
+            <% if (locals.status_raw) { %>
+                <pre style="color:#ccc; font-size:0.8rem;"><%= status_raw %></pre>
+            <% } %>
+        <% } else { %>
+            <ul style="list-style:none; padding:0;">
+                <% workers.forEach(w => { %>
+                    <li style="margin:8px 0; font-size:1.1rem; color:#FFFFFF;">
+                        RPi <%= w.port %> :
+                        <% if (w.state === 'ON') { %>
+                            <span style="color:#2ecc71; font-weight:bold;">ALLUMÉ</span>
+                        <% } else { %>
+                            <span style="color:#e74c3c; font-weight:bold;">ÉTEINT</span>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+        <div class="actions" style="display: flex; gap: 10px; margin-top: 20px;">
+            <form method="POST" action="/admin/cluster" onsubmit="return confirm('Allumer tous les Raspberry Pi ?');">
+                <input type="hidden" name="cluster" value="on">
+                <button type="submit" class="btn" style="background-color:#3498db; cursor:pointer;">
+                    Allumer les RPI0
+                </button>
+            </form>
+
+            <form method="POST" action="/admin/cluster" onsubmit="return confirm('Éteindre tous les Raspberry Pi ?');">
+                <input type="hidden" name="cluster" value="off">
+                <button type="submit" class="btn" style="background-color:#e74c3c; cursor:pointer;">
+                    Éteindre les RPI0
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-container" style="max-width: 600px; text-align: center; margin: 20px auto;">
+        <h2 style="color: white;">Monitor Système Cluster</h2>
+        
+        <div style="margin: 20px; padding: 20px; border: 2px solid <%= locals.color || 'white' %>; border-radius: 10px; background: rgba(0,0,0,0.3);">
+            <h3 style="color: white;">Température CPU</h3>
+            <p style="font-size: 3rem; color: <%= locals.color || 'white' %>; font-weight: bold; margin: 10px 0;">
+                <%= locals.temp || '--' %> °C
+            </p>
+        </div>
+
+        <div class="actions" style="display: flex; gap: 10px; justify-content: center;">
+            <form method="POST" action="/admin/fan">
+                <input type="hidden" name="state" value="on">
+                <button type="submit" class="btn" style="background-color: #2ecc71; cursor:pointer;">Allumer Ventilo</button>
+            </form>
+
+            <form method="POST" action="/admin/fan">
+                <input type="hidden" name="state" value="off">
+                <button type="submit" class="btn" style="background-color: #e74c3c; cursor:pointer;">Éteindre Ventilo</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('fragments/foot') %>
