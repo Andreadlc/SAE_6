@@ -2,13 +2,14 @@
 <%- include('fragments/navigation') %>
 
 <main>
+    
     <div class="form-container">
+        <h1 style="color: rgba(255, 255, 255, 0.927);">Calcul sur le cluster MPI</h1>
         <% if (locals.error) { %>
             <p style="color: darkred; font-weight: bold; border: 1px solid darkred; padding: 10px;">
                 <%= error %>
             </p>
         <% } %>
-
         <form class="form" id="calcul-form" action="/calcul" method="POST">
 
             <div class="section-form">
@@ -34,7 +35,7 @@
             <input type="submit" id="btn-lancer" class="form-btn" value="Lancer le calcul">
             <input type="reset" class="form-btn" value="Réinitialiser">
 
-            <div id="loading" style="display: none; margin-top: 15px; color: blue; font-weight: bold;">
+            <div id="loading" style="display: none; margin-top: 15px; color: rgb(255, 255, 255);background-color: #003857; font-weight: bold;padding: 10px;">
                 <img src="https://i.gifer.com/ZKZg.gif" width="20" alt=""> Calcul en cours sur le cluster MPI...
             </div>
         </form>

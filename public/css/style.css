@@ -16,10 +16,11 @@
 
 
     --bg-form: #0077b6;
+    --bg-forn: #024c74;
     --form-label-color: #fff;
     --form-textfield-bg: #fff;
     --form-submit-bg: darkgreen;
-    --form-clear-bg: #A01C2A;
+    --form-clear-bg: #a4161a;
     --form-btn-text: #fff;
 
 }
@@ -296,7 +297,7 @@ input[type="password"]::-ms-clear {
 }
 
 .invalid { 
-    color: #A01C2A !important; /* Rouge */
+    color: #871722 !important; /* Rouge */
 }
 
 /* bas de page */

@@ -85,6 +85,10 @@ exports.postAuth = async (req, res) => {
                 };
                 
                 res.redirect('/');
+            
+            }else {
+            req.session.error = "Identifiants incorrects.";
+            res.redirect('/auth');
         }
         } else {
             req.session.error = "Identifiants incorrects.";

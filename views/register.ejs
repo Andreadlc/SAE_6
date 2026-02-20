@@ -3,15 +3,10 @@
 
 <main>
     <div class="login-container">
+        <h1 style="color: rgba(57, 57, 57, 0.927); margin-bottom: 20px; text-align: center;">Inscription au service</h1>
         <fieldset>
             <legend>Inscription</legend>
             <form method='post' action="/register">
-                <% if (locals.error) { %>
-                    <p style="color: red; border: 1px solid red; padding: 10px;">
-                        <%= error %>
-                    </p>
-                <% } %>
-
                 <label for='username'>Nom d'utilisateur</label>
                 <input type='text' name='username' id='username' placeholder='Choisir un pseudo' required>
 

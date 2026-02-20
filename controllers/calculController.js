@@ -29,3 +29,13 @@ exports.postCalcul = (req, res) => {
         });
     }, 2000);
 };
+
+exports.getHistorique = (req, res) => {
+    // On ne garde que la sécurité pour le rôle et l'état de connexion
+    const role = (req.session.user && req.session.user.role) ? req.session.user.role : '0';
+
+    res.render('historique', {
+        userRole: role,
+        isLog: req.session.isLog
+    });
+};
