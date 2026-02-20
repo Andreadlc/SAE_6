@@ -1,13 +1,13 @@
 :root{
-    --nav: #0077b6;
+    --nav: #280905;
 
-    --footer: #0077b6;
+    --footer: #280905;
     --footer-text: #fff;
 
     --bg: white;
     --bg-container: #ddd;
 
-    --button-bg: #0077b6;
+    --button-bg: 973511;
     --bg-slide: #fff;
 
     --bg-presentation: #fff;
@@ -15,8 +15,8 @@
     --ombre-presentation: grey;
 
 
-    --bg-form: #0077b6;
-    --bg-forn: #024c74;
+    --bg-form: #740A03;
+    --bg-forn: #C3110C;
     --form-label-color: #fff;
     --form-textfield-bg: #fff;
     --form-submit-bg: darkgreen;
@@ -115,7 +115,7 @@ nav{
 .nav-btn li a:hover {
     transform: translateY(-5px);
     border-radius: 30px;
-    background-color: #0096c7; /* léger survol pour effet */
+    background-color: rgb(195, 17, 12); /* léger survol pour effet */
 }
 
 /* bouton */
