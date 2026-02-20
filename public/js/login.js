@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             passwordInput.setAttribute('type', type);
             
             // Change l'icône (optionnel)
-            this.textContent = type === 'password' ? '👁️' : '🙈';
+            this.textContent = type === 'password' ? '👓' : '🕶️';
         });
     }
 });
