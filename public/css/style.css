@@ -171,6 +171,14 @@ main {
     flex-direction: column;
     padding-top: 10px;
 }
+.presentation-admin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 
 fieldset{
     margin: 20px;

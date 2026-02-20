@@ -1,12 +1,13 @@
 <%- include('fragments/head') %>
 <%- include('fragments/navigation') %>
-
-<main>
+<h1>Administration du Cluster</h1>
+<main class="presentation-admin">
+    
     <div class="form-container" style="margin:20px; padding:20px; border-radius:10px;">
-        <h3 style="color:white;">État des Raspberry Pi Zero (Workers)</h3>
+        <h2 style="color:white;">État des Raspberry Pi Zero (Workers)</h2>
 
         <% if (!locals.workers || workers.length === 0) { %>
-            <p style="color:#ff4d4d;">Impossible de récupérer l’état du cluster</p>
+            <p style="color:#ffffff;padding: 2%;background-color: #004C75;">Impossible de récupérer l’état du cluster</p>
             <% if (locals.status_raw) { %>
                 <pre style="color:#ccc; font-size:0.8rem;"><%= status_raw %></pre>
             <% } %>
@@ -42,14 +43,14 @@
         </div>
     </div>
 
-    <div class="form-container" style="max-width: 600px; text-align: center; margin: 20px auto;">
+    <div class="form-container" >
         <h2 style="color: white;">Monitor Système Cluster</h2>
         
         <div style="margin: 20px; padding: 20px; border: 2px solid <%= locals.color || 'white' %>; border-radius: 10px; background: rgba(0,0,0,0.3);">
             <h3 style="color: white;">Température CPU</h3>
-            <p style="font-size: 3rem; color: <%= locals.color || 'white' %>; font-weight: bold; margin: 10px 0;">
+            <h4 style="font-size: 3rem; color: <%= locals.color || 'white' %>; font-weight: bold; margin: 10px 0;">
                 <%= locals.temp || '--' %> °C
-            </p>
+            </h4>
         </div>
 
         <div class="actions" style="display: flex; gap: 10px; justify-content: center;">
